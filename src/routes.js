@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const authMiddleware  = require('./middleware/auth')
 
 // Controllers
 const ProductsController = require('./controllers/ProductsController')
@@ -8,6 +9,7 @@ const app = Router()
 
 app.post('/register', AuthController.register)
 
+app.use(middleware)
 app.post('/products', ProductsController.create)
 app.get('/products', ProductsController.read)
 app.put('/products/:id', ProductsController.update)
